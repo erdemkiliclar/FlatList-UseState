@@ -15,6 +15,15 @@ export const OdevFlat = () => {
         {id:"4", title:"Porsche"},
     ]
 
+    const header=()=>{
+        return(
+            <View>
+                <Text>
+                    Favorite Cars
+                </Text>
+            </View>
+        )
+    }
     const touched =(item) =>{
         setState(item)
     }
@@ -28,6 +37,15 @@ export const OdevFlat = () => {
         )
     }
     
+    const footer =() =>{
+        return(
+            <View style={{alignSelf:"center"}}>
+
+            <Text style={{fontSize:15,fontWeight:"bold",fontStyle:"italic",paddingTop:50}}>Choise: {state}</Text>
+            </View>
+        )
+    }
+
     return(
         <View style={{justifyContent:"flex-start",flex:1,paddingTop:100}}>
             <View style={{backgroundColor:"lightgrey",borderRadius:10,padding:8,width:"40%",alignItems:"center"}}>
@@ -37,13 +55,15 @@ export const OdevFlat = () => {
 
 
                 <FlatList
+                ListHeaderComponent={header}
+                ListFooterComponent={footer}
                 scrollEnabled={false}
                 data={data}
                 renderItem={renderItem}
                 keyExtractor={item=>item.id}
                 ItemSeparatorComponent={<View style={{padding:10}}/>}
                 />
-                <Text style={{fontSize:15,fontWeight:"bold",fontStyle:"italic",paddingTop:50}}>Choise: {state}</Text>
+                
             </View>
             
             
